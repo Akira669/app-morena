@@ -24,6 +24,4 @@ $(document).ready(function(){
 			 $(element).removeClass('has-error').addClass('has-success');
 		}
 	});
-	
-	
 });

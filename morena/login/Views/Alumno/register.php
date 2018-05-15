@@ -1,10 +1,9 @@
-<div class="container">
-  <h2>Registro de Afiliado</h2>
-
-  <class="nav-item">
-    <!--Boton de inicio-->
-    <input type="submit" src="/login/home.php" value="Volver al Incio" /> 
-
+<?php require_once 'templates/header.php'; ?>
+<div class="content">
+     <div class="container">
+       <h2>Registro de Afiliado</h2>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        
   <form action="?controller=alumno&&action=save" method="POST">
     <div class="form-group">
       <label for="text">Nombres:</label>
@@ -37,14 +36,13 @@
       <input type="text" class="form-control" id="claveelector" placeholder="Clave de Elector" name="claveelector">
     </div>
 
-    <!-- <div class="form-group">
-      <label for="text"></label>
-      <input type="text" name="apellidos" class="form-control" placeholder="Ingrese su apellido">
-    </div>  -->
-
     <div class="check-box">
       <label>Activo <input type="checkbox" name="estado">  </label>      
     </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
+      </div>
+     </div>
 </div>
+<?php require_once 'templates/footer.php';?>
+  

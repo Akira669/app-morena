@@ -147,9 +147,6 @@ class Alumno
 
 	public static function save($alumno){
 		$db=Db::getConnect();
-		//var_dump($alumno);
-		//die();
-		
 
 		$insert=$db->prepare('INSERT INTO alumno VALUES (NULL, :nombres,:apellidopaterno,:apellidomaterno,:calle,:numext,:numint,:colonia,:codigopostal,:seccion,:claveelector,:estado)');
 		$insert->bindValue('nombres',$alumno->getNombres());

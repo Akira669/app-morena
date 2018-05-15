@@ -1,6 +1,5 @@
 <?php
-class Cl_User
-{
+class Cl_User{
 	/**
 	 * @var va a contener la conexión de base de datos
 	 */
@@ -9,8 +8,7 @@ class Cl_User
 	/**
 	 * Inializar DBclass
 	 */
-	public function __construct()
-	{
+	public function __construct(){
 		$db = new Cl_DBclass();
 		$this->_con = $db->con;
 	}
@@ -19,28 +17,19 @@ class Cl_User
 	 * Registro de usuarios
 	 * @param array $data
 	  */
-	public function registration( array $data )
-	{
+	public function registration( array $data ){
 		if( !empty( $data ) ){
-			
-			// Trim todos los datos entrantes:
 			$trimmed_data = array_map('trim', $data);
-			
-			
-			
-			// escapar de las variables para la seguridad
+	
 			$name = mysqli_real_escape_string( $this->_con, $trimmed_data['name'] );
 			$password = mysqli_real_escape_string( $this->_con, $trimmed_data['password'] );
 			$cpassword = mysqli_real_escape_string( $this->_con, $trimmed_data['confirm_password'] );
-			
-			
-			// Verifica la direccion de correo electrónico:
+	
 			if (filter_var( $trimmed_data['email'], FILTER_VALIDATE_EMAIL)) {
 				$email = mysqli_real_escape_string( $this->_con, $trimmed_data['email']);
 			} else {
 				throw new Exception( "Por favor, introduce una dirección de correo electrónico válida!" );
 			}
-			
 			
 			if((!$name) || (!$email) || (!$password) || (!$cpassword) ) {
 				throw new Exception( FIELDS_MISSING );
@@ -53,31 +42,29 @@ class Cl_User
 			if(mysqli_query($this->_con, $query)){
 				mysqli_close($this->_con);
 				return true;
-			};
+			}
 		} else{
 			throw new Exception( USER_REGISTRATION_FAIL );
 		}
 	}
+
 	/**
 	 * Este metodo para iniciar sesión
 	 * @param array $data
 	 * @return retorna falso o verdadero
 	 */
-	public function login( array $data )
-	{
+	public function login( array $data ){
 		$_SESSION['logged_in'] = false;
 		if( !empty( $data ) ){
-			
-			// Trim todos los datos entrantes:
 			$trimmed_data = array_map('trim', $data);
 			
-			// escapar de las variables para la seguridad
 			$email = mysqli_real_escape_string( $this->_con,  $trimmed_data['email'] );
 			$password = mysqli_real_escape_string( $this->_con,  $trimmed_data['password'] );
 				
 			if((!$email) || (!$password) ) {
 				throw new Exception( LOGIN_FIELDS_MISSING );
 			}
+
 			$password = md5( $password );
 			$query = "SELECT user_id, name, email, created FROM users where email = '$email' and password = '$password' ";
 			$result = mysqli_query($this->_con, $query);
@@ -106,10 +93,8 @@ class Cl_User
 	public function account( array $data )
 	{
 		if( !empty( $data ) ){
-			// Trim todos los datos entrantes:
 			$trimmed_data = array_map('trim', $data);
 			
-			// escapar de las variables para la seguridad
 			$password = mysqli_real_escape_string( $this->_con, $trimmed_data['password'] );
 			$cpassword = $trimmed_data['confirm_password'];
 			$user_id = mysqli_real_escape_string( $this->_con, $trimmed_data['user_id'] );
@@ -150,8 +135,6 @@ class Cl_User
 	public function forgetPassword( array $data )
 	{
 		if( !empty( $data ) ){
-			
-			// escapar de las variables para la seguridad
 			$email = mysqli_real_escape_string( $this->_con, trim( $data['email'] ) );
 			
 			if((!$email) ) {
@@ -180,15 +163,14 @@ class Cl_User
 	 * Esto generará una contraseña aleatoria
 	 * @return string
 	 */
-	
 	private function randomPassword() {
 		$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-		$pass = array(); //recuerde que debe declarar $pass como un array
-		$alphaLength = strlen($alphabet) - 1; //poner la longitud -1 en caché
+		$pass = array(); 
+		$alphaLength = strlen($alphabet) - 1; 
 		for ($i = 0; $i < 8; $i++) {
 			$n = rand(0, $alphaLength);
 			$pass[] = $alphabet[$n];
 		}
-		return implode($pass); //convertir el array en una cadena
+		return implode($pass); 
 	}
 }

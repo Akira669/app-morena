@@ -11,7 +11,7 @@ class Cl_DBclass
 	 */
 	public function __construct()
 	{
-		$this->con = mysqli_connect("localhost", "root", "", "morena");
+		$this->con = mysqli_connect("localhost", "root", "Akira_123", "morena");
 		if( mysqli_connect_error()) echo "Falló conexión a MySQL: " . mysqli_connect_error();
 	}
 }

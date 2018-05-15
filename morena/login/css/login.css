@@ -1,9 +1,11 @@
 body {
-	background: #eee !important;	
+	background: #70262D !important;	
 }
 
+
 .login-form{
-	margin:4% auto 0;
+	
+  margin:4% auto 0;
 	max-width:440px;
 }
 
@@ -41,7 +43,10 @@ body {
 	border-radius: 10px 10px 0 0;
 }
 .form-header i{font-size:60px;}
+
 .form-footer {
+  display: flex;
+  justify-content: center;
 	padding: 15px 40px;	
 }
 .form-signin-heading{

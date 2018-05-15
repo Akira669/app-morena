@@ -1,19 +1,16 @@
-<?php 
-	require_once('connection.php');
-	if (isset($_GET['controller'])&&isset($_GET['action'])) {
-		
-		$controller=$_GET['controller'];
-		$action=$_GET['action'];
-	}else{
-		$controller='alumno';
-		$action='index';
-	}
-	require_once('Views/Layouts/layout.php');	
- ?>
-
-
-
- 
+<?php require_once 'templates/header.php'; ?>
+<div class="content">
+     <div class="container">
+     	<div class="col-md-8 col-sm-8 col-xs-12">
+     		<?php 
+     			$padron = new UsuarioController();
+     			$padron->show();
+     		?>
+     	</div>
+     </div>
+</div>
+<?php require_once 'templates/footer.php';?>
+	
 
 
 
