@@ -1,9 +1,9 @@
 <?php 
-/*
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-*/
+
 ob_start();
 session_start();
 require_once 'config.php'; 
@@ -24,6 +24,8 @@ if(!isset($_SESSION['logged_in'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+
+    <script src="js/bootbox.min.js" type="text/javascript" ></script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -47,7 +49,7 @@ if(!isset($_SESSION['logged_in'])){
 					<li <?php if($uri == 'info.php') echo "class='active'"; ?>><a href="info.php">info</a></li>
 					
 					<li <?php if($uri == 'padron.php') echo "class='active'"; ?>  class="dropdown">
-						<a href="#" data-toggle="dropdown">Padron</a>
+						<a href="#" data-toggle="dropdown">Padron <span class="caret"></span> </a>
 						<ul role="menu" class="dropdown-menu">
 							<li> <a href="padron.php">Ver padron</a> </li>
 							<li class="divider"></li>

@@ -31,9 +31,10 @@
   <body>
 	<div class="container">
 		<div class="login-form">
-			
 			<div class="form-header">
-				<i class="fa fa-user"></i>
+				<picture class="header_img">
+					<img src="imagenes/logo_morena.png">
+				</picture>
 			</div>
 			<form id="login-form" method="post" class="form-signin" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 				<input name="email" id="email" type="email" class="form-control" placeholder="Correo electrónico" autofocus> 

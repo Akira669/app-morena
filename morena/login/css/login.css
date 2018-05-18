@@ -2,10 +2,8 @@ body {
 	background: #70262D !important;	
 }
 
-
 .login-form{
-	
-  margin:4% auto 0;
+  margin:12% auto 0;
 	max-width:440px;
 }
 
@@ -14,6 +12,17 @@ body {
 	font-weight: 700;
     letter-spacing: -1px;
     font-style: oblique;
+}
+
+.header_img img{
+  width: 250px;
+  height: 100px;
+}
+
+.icon_login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-header,.form-footer{

@@ -44,7 +44,8 @@ th a:hover {
 }
 
 #table-padron thead{
-  background-color: black;
+  text-align: center;
+  background-color: #77162E;
 }
 
 .dynatable-pagination-links span,

@@ -25,12 +25,15 @@
 					<td><?php echo $alumno->getApellidoPaterno(); ?></td>
 					<td><?php echo $alumno->getApellidoMaterno(); ?></td>
 					<td><?php echo $alumno->getColonia(); ?></td>
-					<td><?php if ( $alumno->getEstado()=='checked'):?>
+					<td><?php if ( $alumno->getEstado()==1):?>
 						Activo
 					<?php else:?>
 						Inactivo
 					<?php endif; ?></td>
-					<td><a href="?controller=alumno&&action=delete&&id=<?php echo $alumno->getId() ?>">Eliminar</a> </td>
+					<td >
+						<button type="button" class="btn btn-info" id="edit"><i class="icon-wrench">Editar</i></button>
+						<button type="button" class="btn btn-danger" id="delete"><i class="icon-remove"></i>Eliminar</button> 
+					</td>
 				</tr>
 					<?php } ?>
 			</tbody>
@@ -45,9 +48,19 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
+
 		$("#table-padron").dynatable();
+		
 		$("#button_excel").on('click',function(){
-			console.log('Descargardo...');
+			alert('Descargardo...');
+		});
+
+		$("#edit").on('click',function(){
+			alert("editar datos");
+		});
+
+		$("#delete").on('click',function(){
+			alert("eliminar");
 		});
 	});
 </script>

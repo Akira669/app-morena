@@ -18,21 +18,18 @@ class UsuarioController
 		require_once('Views/Alumno/register.php');
 	}
 
-	function save(){
-		if (!isset($_POST['estado'])) {
-			$estado="of";
-		}else{
-			$estado="on";
-		}
-		$alumno= new Alumno(null, $_POST['nombres'],$_POST['apellidopaterno'],$_POST['apellidomaterno'],$_POST['calle'],$_POST['numext'],$_POST['numint'],$_POST['colonia'],$_POST['codigopostal'],$_POST['seccion'],$_POST['claveelector'],$estado);
+	function save($data){
+		$afilidado = new Alumno($data['nombre'],$data['apaterno'],$data['amaterno'],$data['calle'],$data['num_ext'],
+			$data['num_int'],$data['colonia'],$data['cp'],$data['telefono'],$data['clave_lector'],$data['activo']);
 
-		Alumno::save($alumno);
-		$this->show();
+		$save=Alumno::save($afilidado);
+		if($save){
+			return true;
+		}
 	}
 
 	function show(){
 		$listaAlumnos=Alumno::all();
-
 		require_once('Views/Alumno/show.php');
 	}
 
@@ -53,21 +50,9 @@ class UsuarioController
 		$this->show();
 	}
 
-	function search(){
-		if (!empty($_POST['id'])) {
-			$id=$_POST['id'];
-			$alumno=Alumno::searchByid($id);
-			$listaAlumnos[]=$alumno;
-			//var_dump($id);
-			//die();
-			require_once('Views/Alumno/show.php');
-		} else {
-			$listaAlumnos=Alumno::all();
-
-			require_once('Views/Alumno/show.php');
-		}
-		
-		
+	function search($claveElector){
+			$afil=Alumno::searchByid($claveElector);
+			return $afil;
 	}
 
 	function error(){
