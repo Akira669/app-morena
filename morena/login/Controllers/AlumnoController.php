@@ -19,8 +19,17 @@ class UsuarioController
 	}
 
 	function save($data){
-		$afilidado = new Alumno($data['nombre'],$data['apaterno'],$data['amaterno'],$data['calle'],$data['num_ext'],
-			$data['num_int'],$data['colonia'],$data['cp'],$data['telefono'],$data['clave_lector'],$data['activo']);
+	
+		$calle = $data['calle']!=null ? $data['calle'] : 'S/R';
+		$num_ext = $data['num_ext']!=null ? $data['num_ext'] : 'S/R';
+		$num_int = $data['num_int']!=null ? $data['num_int'] : 'S/R';
+		$colonia = $data['colonia']!=null ? $data['colonia'] : 'S/R'; 
+		$cp = $data['cp']!=null ? $data['cp'] : 00000;
+
+		$afilidado = new Alumno($data['nombre'],$data['apaterno'],$data['amaterno'],
+								$calle,$num_ext,$num_int,$colonia,$cp,
+								$data['telefono'],$data['clave_lector'],
+								$data['activo'],$data['seccion']);
 
 		$save=Alumno::save($afilidado);
 		if($save){

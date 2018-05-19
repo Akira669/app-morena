@@ -713,9 +713,9 @@
 
       if (recordsShown < recordsQueryCount && settings.features.paginate) {
         var bounds = obj.records.pageBounds();
-        text += "<span class='dynatable-record-bounds'>" + (bounds[0] + 1) + " to " + bounds[1] + "</span> de ";
+        text += "<span class='dynatable-record-bounds'>" + (bounds[0] + 1) + " de " + bounds[1] + "</span> total ";
       } else if (recordsShown === recordsQueryCount && settings.features.paginate) {
-        text += recordsShown + " de ";
+        text += recordsShown + " total ";
       }
       text += recordsQueryCount + " " + collection_name;
       if (recordsQueryCount < recordsTotal) {

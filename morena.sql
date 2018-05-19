@@ -34,6 +34,7 @@ CREATE TABLE `afiliados` (
   `telefono` int(15) DEFAULT NULL,
   `claveelector` varchar(18) NOT NULL,
   `estado` varchar(1) DEFAULT NULL,
+  `seccion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`claveelector`),
   UNIQUE KEY `claveelector` (`claveelector`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -45,7 +46,7 @@ CREATE TABLE `afiliados` (
 
 LOCK TABLES `afiliados` WRITE;
 /*!40000 ALTER TABLE `afiliados` DISABLE KEYS */;
-INSERT INTO `afiliados` VALUES ('asd','asd','asd','asdasd','12','12','asdsad',12,23423,'123','0'),('mmm','aaa','qqqqqq','dfdsf','12','12','asdasd',12,101010101,'1233434','0'),('dfgfdg','dsfdgf','sdf','sdfsdf','23','23','dsdf',23,45345,'54354','1'),('dfgdg','jkhkj','jhkjh','hvjhg','45','45','giug',45,767,'9876','0'),('Pedro ','Ramos','Leon','Ote 50 ','Mz 14','Lt 25','Providencia ',56616,1001,'JODUF773HDIKSD','1'),('Guillermo ','Reyes','Martinez','Toluca','Mz 83','Lt 01','Guadalupana I',56616,1000,'REMG9102279T6','1'),('Ignacio ','Ponce','Leon','Toluca','Mz 14','Lt 25','Guadalupana',56616,1000,'REMG9102279T61','1'),('Sandra','Zaragoza','Ponce','Altamirano ','Mz 55','Lt 49','San Isidro ',56617,1000,'REMG9102279T62','1'),('Sandra ','Lopez','Gomez','Ote 44a','Mz 134','Lt 34','Guadalupana II',56616,1000,'SAKDFJWDJF83747S','1');
+INSERT INTO `afiliados` VALUES ('asd','asd','asd','asdasd','12','12','asdsad',12,23423,'123','0','tester'),('mmm','aaa','qqqqqq','dfdsf','12','12','asdasd',12,101010101,'1233434','0','tester'),('dfgfdg','dsfdgf','sdf','sdfsdf','23','23','dsdf',23,45345,'54354','1','tester'),('dfgdg','jkhkj','jhkjh','hvjhg','45','45','giug',45,767,'9876','0','tester'),('Pedro ','Ramos','Leon','Ote 50 ','Mz 14','Lt 25','Providencia ',56616,1001,'JODUF773HDIKSD','1','tester'),('Guillermo ','Reyes','Martinez','Toluca','Mz 83','Lt 01','Guadalupana I',56616,1000,'REMG9102279T6','1','tester'),('Ignacio ','Ponce','Leon','Toluca','Mz 14','Lt 25','Guadalupana',56616,1000,'REMG9102279T61','1','tester'),('Sandra','Zaragoza','Ponce','Altamirano ','Mz 55','Lt 49','San Isidro ',56617,1000,'REMG9102279T62','1','tester'),('Sandra ','Lopez','Gomez','Ote 44a','Mz 134','Lt 34','Guadalupana II',56616,1000,'SAKDFJWDJF83747S','1','tester');
 /*!40000 ALTER TABLE `afiliados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-18  1:37:36
+-- Dump completed on 2018-05-18 21:16:24

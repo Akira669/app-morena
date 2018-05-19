@@ -12,14 +12,15 @@ class Alumno{
 	private $numint;
 	private $colonia;
 	private $codigopostal;
-	private $seccion;
+	private $telefono;
 	private $claveelector;
 	private $estado;
+	private $seccion;
 	
 
 	
 	function __construct($nombres,$apellidopaterno, $apellidomaterno, $calle, $numext, $numint, $colonia, $codigopostal,
-						$seccion, $claveelector, $estado){
+						$telefono, $claveelector, $estado,$seccion){
 		$this->setNombres($nombres);
 		$this->setApellidoPaterno($apellidopaterno);
 		$this->setApellidoMaterno($apellidomaterno);
@@ -28,9 +29,10 @@ class Alumno{
 		$this->setNumInt($numint);
 		$this->setColonia($colonia);
 		$this->setCodigoPostal($codigopostal);
-		$this->setSeccion($seccion);
+		$this->setTelefono($telefono);
 		$this->setClaveElector($claveelector);
-		$this->setEstado($estado);				
+		$this->setEstado($estado);	
+		$this->setSeccion($seccion);			
 	}
 
 	public function getNombres(){
@@ -97,12 +99,12 @@ class Alumno{
 		$this->codigopostal = $codigopostal;
 	}
 
-	public function getSeccion(){
-		return $this->seccion;
+	public function getTelefono(){
+		return $this->telefono;
 	}
 
-	public function setSeccion($seccion){
-		$this->seccion = $seccion;
+	public function setTelefono($telefono){
+		$this->telefono = $telefono;
 	}
 
 	public function getClaveElector(){
@@ -121,11 +123,19 @@ class Alumno{
 		return $this->estado = $estado;
 	}
 
+	public function getSeccion(){
+		return $this->seccion;
+	}
+
+	public function setSeccion($seccion){
+		return $this->seccion = $seccion;
+	}
+
 	public static function save($afil){
 		$db=Db::getConnect();
 
-		$insert=$db->prepare('INSERT INTO afiliados VALUES (:nombres,:apellidopaterno,:apellidomaterno,:calle,:numext,
-														:numint,:colonia,:codigopostal,:seccion,:claveelector,:estado)');
+		$insert=$db->prepare('INSERT INTO afiliados VALUES (:nombres,:apellidopaterno,:apellidomaterno,
+			:calle,:numext,:numint,:colonia,:codigopostal,:telefono,:claveelector,:estado,:seccion)');
 		$insert->bindValue('nombres',$afil->getNombres());
 		$insert->bindValue('apellidopaterno',$afil->getApellidoPaterno());
 		$insert->bindValue('apellidomaterno',$afil->getApellidoMaterno());
@@ -134,9 +144,10 @@ class Alumno{
 		$insert->bindValue('numint',$afil->getNumInt());
 		$insert->bindValue('colonia',$afil->getColonia());
 		$insert->bindValue('codigopostal',$afil->getCodigoPostal());
-		$insert->bindValue('seccion',$afil->getSeccion());
+		$insert->bindValue('telefono',$afil->getTelefono());
 		$insert->bindValue('claveelector',$afil->getClaveElector());
 		$insert->bindValue('estado',$afil->getEstado());
+		$insert->bindValue('seccion',$afil->getSeccion());
 		if($insert->execute()==true){
 			return true;
 		}
@@ -146,14 +157,19 @@ class Alumno{
 	public static function all(){
 		$db=Db::getConnect();
 
-		$select=$db->query('SELECT * FROM afiliados order by claveelector');
+		$select=$db->query('SELECT 
+							nombres,apellidopaterno,apellidomaterno,calle,
+							numext,numint,colonia,codigopostal,telefono,
+							claveelector,estado,seccion 
+							FROM afiliados 
+							order by estado, claveelector');
 		
 		foreach($select->fetchAll() as $afil){
 			$listaAfiliados[] = new Alumno(
 										$afil['nombres'],$afil['apellidopaterno'],$afil['apellidomaterno'],
 										$afil['calle'],$afil['numext'],$afil['numint'],
 										$afil['colonia'],$afil['codigopostal'],$afil['telefono'],
-										$afil['claveelector'],$afil['estado']
+										$afil['claveelector'],$afil['estado'],$afil['seccion']
 									);
 		}
 

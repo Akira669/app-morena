@@ -32,6 +32,14 @@
 	}
 
 	/*
+	*Editor Afiliado
+	*/
+	if($bandera_action==3){
+		$existe=duplicidad($Controller,$clave_elector,$afilRegistrado);
+		echo (int) $existe;
+	}
+
+	/*
 	* Functiones Accion
 	*/
 	function duplicidad($Controller,$clave_elector,$afilRegistrado){
@@ -45,6 +53,11 @@
 		if($registerAfiliado){
 			return $afilRegistrado;
 		}
+	}
+
+	function editor($Controller,$clave_elector,$afilRegistrado){
+		print_r($clave_elector);
+		exit();
 	}
 ?>
   

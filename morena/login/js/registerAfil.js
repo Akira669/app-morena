@@ -6,11 +6,37 @@ $(document).ready(function(){
 		$("#mesaje_duplicado").addClass('nover');
 	});
 
+	$("#nombre").keyup(function(){
+		$("#mesaje_sinData").addClass('nover');
+			$("#nombre").removeClass('faltaDato');
+	});
+
+	$("#apellidopaterno").keyup(function(){
+		$("#mesaje_sinData").addClass('nover');
+			$("#apellidopaterno").removeClass('faltaDato');
+	});
+
+	$("#apellidomaterno").keyup(function(){
+		$("#mesaje_sinData").addClass('nover');
+			$("#apellidomaterno").removeClass('faltaDato');
+	});
+
+	$("#telefono").keyup(function(){
+		$("#mesaje_sinData").addClass('nover');
+			$("#telefono").removeClass('faltaDato');
+	});
+
+	$("#seccion").keyup(function(){
+		$("#mesaje_sinData").addClass('nover');
+			$("#seccion").removeClass('faltaDato');
+	});
+
 	$("#registerAfil").on('click',function(){
 		var data = {};
 		
 		$("#mesaje_electro").addClass('nover');
 		$("#mesaje_duplicado").addClass('nover');
+		$("#mesaje_sinData").addClass('nover');
 		
 		data.clave_lector = $("#claveelector").val();
 		data.nombre = $("#nombre").val();
@@ -27,11 +53,48 @@ $(document).ready(function(){
 			data.activo = 1;
 		}else { data.activo =0;}
 
+		data.seccion = $("#seccion").val();
+
 		if(data.clave_lector == null || data.clave_lector == ""){
 			$("#mesaje_electro").removeClass('nover');
 			$("#claveelector").addClass('faltaDato');
 			$("html, body").animate({ scrollTop: 0 }, "fast");
 			bootbox.alert("Por favor escriba una clave de elector...");
+			return;
+		}
+
+		if(data.nombre == null || data.nombre == ""){
+			$("#mesaje_sinData").removeClass('nover');
+			$("#nombre").addClass('faltaDato');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+			return;
+		}
+
+		if(data.apaterno == null || data.apaterno == ""){
+			$("#mesaje_sinData").removeClass('nover');
+			$("#apellidopaterno").addClass('faltaDato');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+			return;
+		}
+
+		if(data.amaterno == null || data.amaterno == ""){
+			$("#mesaje_sinData").removeClass('nover');
+			$("#apellidomaterno").addClass('faltaDato');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+			return;
+		}
+
+		if(data.telefono == null || data.telefono == ""){
+			$("#mesaje_sinData").removeClass('nover');
+			$("#telefono").addClass('faltaDato');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+			return;
+		}
+
+		if(data.seccion == null || data.seccion == ""){
+			$("#mesaje_sinData").removeClass('nover');
+			$("#seccion").addClass('faltaDato');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
 			return;
 		}
 

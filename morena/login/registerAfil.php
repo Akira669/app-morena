@@ -14,6 +14,11 @@
             <strong>Alert!</strong> La clave de elector ya se encuentra registrada...
           </div>
 
+          <div class="alert nover" id="mesaje_sinData">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Tip!</strong> Todos los campos son requeridos...
+          </div>
+
   <form action="" method="POST" >
     <div class="comadar">
     <legend>Datos personales</legend>
@@ -41,6 +46,11 @@
      <div class="form-group">
       <label for="text">Telefono:</label>
       <input type="text" class="form-control" id="telefono" placeholder="Telefono" name="telefono">
+    </div>
+
+    <div class="form-group">
+      <label for="text">Seccion:</label>
+      <input type="text" class="form-control" id="seccion" placeholder="Seccion" name="seccion">
     </div>
 
     <legend>Direccion</legend>
@@ -90,7 +100,8 @@
 #mesaje_electro{
   background-color: red;
 }
-#mesaje_duplicado{
+#mesaje_duplicado,
+#mesaje_sinData{
   background-color: yellow;
 }
 .comadar{
